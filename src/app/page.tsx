@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Calendar, MapPin, Heart, Scissors, Wind, Crown, Star, ChevronRight } from "lucide-react";
+import { Sparkles, Calendar, MapPin, Heart, Scissors, Wind, Crown, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -104,54 +104,75 @@ export default function WomensLandingPage() {
         <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-6 py-20 relative z-10">
-          <div className="max-w-4xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-2xl">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                {/* Trust badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur text-stone-700 text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm border border-rose-100">
+                  <MapPin className="w-3.5 h-3.5 text-rose-500" />
+                  Pflugerville, TX
+                </div>
+
+                {/* Main headline */}
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-semibold leading-tight mb-6 text-stone-800">
+                  Your Go-To{" "}
+                  <span className="text-rose-600 italic">Women's Hair Stylist</span>{" "}
+                  in Pflugerville
+                </h1>
+
+                {/* Supporting paragraph */}
+                <p className="text-lg sm:text-xl md:text-2xl text-stone-600 mb-10 leading-relaxed max-w-2xl font-light">
+                  Experience personalized hair care in a welcoming atmosphere.
+                  From silk press to natural hair care, we celebrate your unique beauty.
+                </p>
+
+                {/* CTA buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-10 py-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-base sm:text-lg font-medium rounded-full hover:shadow-xl hover:scale-105 transition-all text-center flex items-center justify-center gap-2"
+                  >
+                    Book Your Appointment <Calendar className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="#services"
+                    className="px-10 py-4 bg-white text-stone-700 text-base sm:text-lg font-medium rounded-full hover:shadow-lg border border-stone-200 hover:border-rose-200 transition-all text-center"
+                  >
+                    Explore Services
+                  </a>
+                </div>
+
+                {/* Trust line */}
+                <p className="text-stone-500 text-sm flex items-center gap-2">
+                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  <span>5.0 rated by women in Pflugerville</span>
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Hero Image */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="relative hidden lg:block"
             >
-              {/* Trust badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur text-stone-700 text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm border border-rose-100">
-                <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                Pflugerville, TX
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/womens-hair-hero.jpg"
+                  alt="Woman with beautiful styled hair at Bigger Than Business salon in Pflugerville"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-rose-900/20 to-transparent" />
               </div>
-
-              {/* Main headline */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-semibold leading-tight mb-6 text-stone-800">
-                Your Go-To{" "}
-                <span className="text-rose-600 italic">Women's Hair Stylist</span>{" "}
-                in Pflugerville
-              </h1>
-
-              {/* Supporting paragraph */}
-              <p className="text-lg sm:text-xl md:text-2xl text-stone-600 mb-10 leading-relaxed max-w-2xl font-light">
-                Experience personalized hair care in a welcoming atmosphere.
-                From silk press to natural hair care, we celebrate your unique beauty.
-              </p>
-
-              {/* CTA buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a
-                  href={bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-10 py-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-base sm:text-lg font-medium rounded-full hover:shadow-xl hover:scale-105 transition-all text-center flex items-center justify-center gap-2"
-                >
-                  Book Your Appointment <Calendar className="w-5 h-5" />
-                </a>
-                <a
-                  href="#services"
-                  className="px-10 py-4 bg-white text-stone-700 text-base sm:text-lg font-medium rounded-full hover:shadow-lg border border-stone-200 hover:border-rose-200 transition-all text-center"
-                >
-                  Explore Services
-                </a>
-              </div>
-
-              {/* Trust line */}
-              <p className="text-stone-500 text-sm flex items-center gap-2">
-                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                <span>5.0 rated by women in Pflugerville</span>
-              </p>
             </motion.div>
           </div>
         </div>
@@ -274,7 +295,7 @@ export default function WomensLandingPage() {
               Passionate professionals dedicated to helping you look and feel your best.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-10">
+            <div className="grid md:grid-cols-3 gap-10 mb-16">
               {STYLIST_HIGHLIGHTS.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -296,6 +317,23 @@ export default function WomensLandingPage() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Stylist Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative rounded-3xl overflow-hidden shadow-xl"
+            >
+              <div className="aspect-[16/9] md:aspect-[21/9]">
+                <Image
+                  src="/womens-hair-hero.jpg"
+                  alt="Professional hair stylists at Bigger Than Business providing expert women's hair services in Pflugerville"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
