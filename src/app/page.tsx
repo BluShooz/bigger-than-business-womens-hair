@@ -71,8 +71,15 @@ export default function WomensLandingPage() {
       <nav className="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-stone-200/50">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-amber-300 rounded-full flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg">
-              BTB
+            <div className="relative w-16 h-16 flex items-center justify-center">
+              <Image
+                src="/btb-logo.png"
+                alt="Bigger Than Business Logo"
+                width={64}
+                height={64}
+                className="object-contain drop-shadow-lg"
+                priority
+              />
             </div>
             <span className="text-xl font-serif font-semibold text-stone-800">
               Bigger Than Business
@@ -111,6 +118,19 @@ export default function WomensLandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
+                {/* Large Logo Display */}
+                <div className="mb-8 flex justify-center lg:justify-start">
+                  <div className="relative w-40 h-40 md:w-48 md:h-48">
+                    <Image
+                      src="/btb-logo.png"
+                      alt="Bigger Than Business Logo - Premium Women's Hair Services"
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                      priority
+                    />
+                  </div>
+                </div>
+
                 {/* Trust badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur text-stone-700 text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm border border-rose-100">
                   <MapPin className="w-3.5 h-3.5 text-rose-500" />
